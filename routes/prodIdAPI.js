@@ -6,12 +6,12 @@ const breakString = (url) => {
     return url.split("/")[5]
 }
 const prodIds = [];
-const keyword = "toaster";
 
-router.get("/view", async (req, res, next) => {
+router.get("/:query", async (req, res, next) => {
+    const { query } = req.params;
     try {
         const response = await axios.get(
-            "https://amazon-web-scrapper.p.rapidapi.com/search/"+keyword,
+            `https://amazon-web-scrapper.p.rapidapi.com/search/"${query}`,
             {
                 params: {
                     api_key: '9bb39d3483a211cfa57e47fc7851fc3a'

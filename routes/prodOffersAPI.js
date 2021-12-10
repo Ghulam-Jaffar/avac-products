@@ -2,12 +2,11 @@ const express = require("express");
 const axios = require("axios");
 const router = express.Router();
 
-const id = "B0000A1ZN1";
-
-router.get("/view", async (req, res, next) => {
+router.get("/:query", async (req, res, next) => {
+    const { query } = req.params;
     try {
         const response = await axios.get(
-            "https://amazon-web-scrapper.p.rapidapi.com/products/"+id+"/offers",
+            `https://amazon-web-scrapper.p.rapidapi.com/products/${query}/offers`,
             {
                 params: {
                     api_key: '9bb39d3483a211cfa57e47fc7851fc3a'
